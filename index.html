@@ -14,7 +14,10 @@
             font-family: 'meiryo';
             src: url('fonts/meiryo.ttc') format('truetype');
         }
-
+        @font-face {
+            font-family: 'komorebi-gothic';
+            src: url('fonts/komorebi-gothic.ttf') format('truetype');
+        }
         body {
             font-family: 'SoukouMincho', Arial, sans-serif;
             line-height: 1.6;
@@ -30,18 +33,19 @@
         }
 
         h1 {
-    font-size : 40px; 
-    line-height : 1;    
-}
- 
-h2 {
-    font-size : 30px;
-    line-height : 1.3333;   
-}
-h3 {
-    font-size : 30px;
-    line-height : 1;    
-}
+            font-size: 40px;
+            line-height: 1;
+        }
+
+        h2 {
+            font-size: 30px;
+            line-height: 1.3333;
+        }
+
+        h3 {
+            font-size: 45px;
+            line-height: 1;
+        }
 
         nav ul {
             list-style: none;
@@ -54,7 +58,10 @@ h3 {
         }
 
         nav ul li a {
-            color: #fff;
+            font-family: 'komorebi-gothic', Arial, sans-serif;
+            line-height: 1.6;
+            color: #000000;
+            font-size:25px;
             text-decoration: none;
         }
 
@@ -107,6 +114,12 @@ h3 {
         }
 
         @media (max-width: 600px) {
+            nav ul {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
             nav ul li {
                 display: block;
                 text-align: center;
@@ -167,110 +180,73 @@ h3 {
     </section>
 
     <section id="projects">
-        <h1>プロジェクト
-            <h2>作品集</h2>
-            <ul>
-                <!-- JavaScriptで動的に追加 -->
-            </ul>
-        </section>
-        <section id="contact">
-            <h1>コンタクトリスト<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe_LeCHTR7XgtjDdOgrkquWqqmcU4Gh9VLEMlrJDo5MiLrrkw/viewform?usp=sf_link" width="640" height="1080" frameborder="0" marginheight="0" marginwidth="0" style="float: right; width: 50%;">読み込んでいます…</iframe></h1>
-            <h2>SNS</h2>
-            <h3>インスタグラム　X(旧Twitter)</h3>
-            <div class="social-icons">
-                <a href="https://www.instagram.com/na2co3_naoto.badminton/" target="_blank">
-                    <img src="images/Instagram_logo.png" alt="Instagram">
-                </a>
-                
-                <a href="https://x.com/na2co3_naobad" target="_blank">
-                    <img src="images/X_logo.png" alt="X">
-                </a>
-            </div>
-        </section>
+        <h1>プロジェクト</h1>
+        <h2>作品集</h2>
+        <ul>
+            <!-- JavaScriptで動的に追加 -->
+        </ul>
+    </section>
 
-        <footer>
-            <div class="copyright">
-                <p>&copy;     なおバドのポートフォリオ</p>
-            </div>
-            <div class="social-icons">
-                <a href="https://www.instagram.com/na2co3_naoto.badminton/" target="_blank">
-                    <img src="images/Instagram_logo.png" alt="Instagram">
-                </a>
-                <a href="https://x.com/na2co3_naobad" target="_blank">
-                    <img src="images/X_logo.png" alt="X">
-                </a>
-            </div>
-            <div>
-            </div>
-        </footer>
+    <section id="contact">
+        <h1>コンタクトリスト</h1>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSe_LeCHTR7XgtjDdOgrkquWqqmcU4Gh9VLEMlrJDo5MiLrrkw/viewform?usp=sf_link" width="640" height="1080" frameborder="0" marginheight="0" marginwidth="0" style="float: right; width: 50%;">読み込んでいます…</iframe>
+        <h2>SNS</h2>
+        <h3>インスタグラム　X(旧Twitter)</h3>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/na2co3_naoto.badminton/" target="_blank">
+                <img src="images/Instagram_logo.png" alt="Instagram">
+            </a>
+            <a href="https://x.com/na2co3_naobad" target="_blank">
+                <img src="images/X_logo.png" alt="X">
+            </a>
+            <p>ご連絡の際は右側のフォームからお願いします！<br>また、インスタグラムとXなら返信までに時間はかかりません。</p>
+        </div>
+    </section>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const sections = document.querySelectorAll('section');
-                const navLinks = document.querySelectorAll('nav ul li a');
+    <footer>
+        <div class="copyright">
+            <p>&copy; なおバドのポートフォリオ</p>
+        </div>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/na2co3_naoto.badminton/" target="_blank">
+                <img src="images/Instagram_logo.png" alt="Instagram">
+            </a>
+            <a href="https://x.com/na2co3_naobad" target="_blank">
+                <img src="images/X_logo.png" alt="X">
+            </a>
+        </div>
+    </footer>
 
-                // 初期表示はホームを表示し、他のセクションを非表示にする
-                sections.forEach(section => {
-                    if (section.getAttribute('id') !== 'home') {
-                        section.style.display = 'none';
-                    }
-                });
-
-                document.getElementById('home').style.display = 'block';
-
-                navLinks.forEach(link => {
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const targetId = link.getAttribute('href').substring(1); // リンク先のセクションIDを取得
-                        sections.forEach(section => {
-                            if (section.getAttribute('id') === targetId) {
-                                section.style.display = 'block'; // 対象のセクションを表示
-                            } else {
-                                section.style.display = 'none'; // それ以外のセクションを非表示
-                            }
-                        });
-                    });
-                });
-                // プロジェクトのリストを動的に追加
-                const projects = [
-                    'プロジェクト1: ここに説明を追加します。',
-                    'プロジェクト2: ここに説明を追加します。',
-                    'プロジェクト3: ここに説明を追加します。'
-                ];
-    
-                const projectsList = document.querySelector('#projects ul');
-                projectsList.innerHTML = '';
-    
-                projects.forEach(project => {
-                    const li = document.createElement('li');
-                    li.textContent = project;
-                    projectsList.appendChild(li);
-                });
-    
-                // ナビゲーションメニューの動的ハイライト
-                window.onscroll = () => {
-                    let current = '';
-    
-                    sections.forEach(section => {
-                        const sectionTop = section.offsetTop;
-                        if (scrollY >= sectionTop - 60) {
-                            current = section.getAttribute('id');
-                        }
-                    });
-    
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${current}`) {
-                            link.classList.add('active');
-                        }
-                    });
-                };
+    <script>
+        // URLのハッシュに基づいて表示するセクションを変更する関数
+        function showSection() {
+            var sections = document.querySelectorAll('section');
+            sections.forEach(function (section) {
+                section.style.display = 'none';
             });
-        </script>
-    </body>
-    
-    </html>
-    
+
+            var hash = window.location.hash || '#home';
+            var activeSection = document.querySelector(hash);
+            if (activeSection) {
+                activeSection.style.display = 'block';
+            }
+
+            var navLinks = document.querySelectorAll('nav ul li a');
+            navLinks.forEach(function (link) {
+                link.classList.remove('active');
+            });
+
+            var activeLink = document.querySelector('nav ul li a[href="' + hash + '"]');
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+        }
+
+        // 初回表示時にセクションを表示
+        window.addEventListener('load', showSection);
+        // URLのハッシュが変更されたときにセクションを表示
+        window.addEventListener('hashchange', showSection);
     </script>
 </body>
+
 </html>
